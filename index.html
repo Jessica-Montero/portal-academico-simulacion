@@ -175,10 +175,10 @@ button {
 
 #datosSimulacion {
     margin-top: 25px;
-    padding: 15px;
+    padding: 20px;
     background: #f1f4f7;
     border-radius: 8px;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 footer {
@@ -351,7 +351,6 @@ footer {
 
         <br>
 
-
         <ul>
 
             <li>
@@ -363,16 +362,16 @@ footer {
             </li>
 
             <li>
-                El formulario permitió observar que el usuario había introducido información.
+                El formulario recibió los datos introducidos durante la simulación.
             </li>
 
             <li>
-                Los datos utilizados en esta simulación no se envían ni almacenan.
+                La prueba se realizó únicamente con información ficticia.
             </li>
 
             <li>
                 En una situación real, siempre debe verificarse el remitente
-                y el enlace antes de iniciar sesión.
+                y el enlace antes de introducir credenciales.
             </li>
 
         </ul>
@@ -412,6 +411,9 @@ function mostrarResultado(event) {
     const usuario =
         document.getElementById("usuario").value;
 
+    const contrasena =
+        document.getElementById("contrasena").value;
+
 
     document.getElementById("inicio").style.display = "none";
 
@@ -424,13 +426,13 @@ function mostrarResultado(event) {
 
     document.getElementById("datosSimulacion").innerHTML =
 
-        "<strong>Resultado de la simulación:</strong><br>" +
+        "<strong>Credenciales introducidas durante la simulación:</strong><br><br>" +
 
-        "Se detectó el ingreso de datos en el formulario.<br>" +
+        "Usuario: " + usuario + "<br>" +
 
-        "Usuario utilizado: " + usuario + "<br>" +
+        "Contraseña: " + contrasena + "<br><br>" +
 
-        "La contraseña utilizada fue ficticia y no fue almacenada ni enviada.";
+        "<strong>Resultado:</strong> las credenciales fueron introducidas en una página que aparentaba ser legítima.";
 
 
     window.scrollTo(0, 0);
