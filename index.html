@@ -173,12 +173,21 @@ button {
     margin: 12px 0;
 }
 
-#datosSimulacion {
-    margin-top: 25px;
-    padding: 18px;
-    background: #f1f4f7;
+.datos-capturados {
+    background: #fdecea;
+    border: 1px solid #f5c6c3;
     border-radius: 8px;
-    line-height: 1.8;
+    padding: 18px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.datos-capturados p {
+    font-family: monospace;
+    font-size: 15px;
+    color: #163f5c;
+    margin: 6px 0;
+    word-break: break-all;
 }
 
 footer {
@@ -193,7 +202,6 @@ footer {
 <body>
 
 <header>
-
     <div class="logo">Portal Académico</div>
 
     <nav>
@@ -202,62 +210,44 @@ footer {
         <a href="#">Servicios</a>
         <a href="#">Contacto</a>
     </nav>
-
 </header>
 
-
 <section class="hero" id="inicio">
-
     <div>
-
         <h1>Bienvenido al Portal Académico</h1>
 
         <p>
             Acceda a sus servicios y recursos académicos.
         </p>
 
-        <a href="#login"
-           class="btn"
-           onclick="mostrarLogin()">
+        <a href="#login" class="btn" onclick="mostrarLogin()">
             Iniciar sesión
         </a>
-
     </div>
-
 </section>
 
-
 <section class="info">
-
     <h2>Servicios académicos</h2>
 
     <div class="cards">
 
         <div class="card">
             <h3>Cursos</h3>
-            <p>
-                Consulte información sobre cursos y actividades académicas.
-            </p>
+            <p>Consulte información sobre cursos y actividades académicas.</p>
         </div>
 
         <div class="card">
             <h3>Calendario</h3>
-            <p>
-                Revise fechas y actividades importantes.
-            </p>
+            <p>Revise fechas y actividades importantes.</p>
         </div>
 
         <div class="card">
             <h3>Documentos</h3>
-            <p>
-                Acceda a recursos e información académica.
-            </p>
+            <p>Acceda a recursos e información académica.</p>
         </div>
 
     </div>
-
 </section>
-
 
 <section class="login" id="login">
 
@@ -265,31 +255,21 @@ footer {
 
         <h2>Iniciar sesión</h2>
 
-        <p>
-            Ingrese sus datos para acceder al portal.
-        </p>
+        <p>Ingrese sus datos para acceder al portal.</p>
 
         <form onsubmit="mostrarResultado(event)">
 
             <label>Usuario</label>
-
-            <input
-                type="text"
-                id="usuario"
-                placeholder="Ingrese su usuario"
-                autocomplete="off"
-                required
-            >
+            <input type="text"
+                   id="campoUsuario"
+                   placeholder="Ingrese su usuario"
+                   autocomplete="off">
 
             <label>Contraseña</label>
-
-            <input
-                type="password"
-                id="contrasena"
-                placeholder="Ingrese su contraseña"
-                autocomplete="off"
-                required
-            >
+            <input type="password"
+                   id="campoPassword"
+                   placeholder="Ingrese su contraseña"
+                   autocomplete="off">
 
             <button type="submit">
                 Iniciar sesión
@@ -301,7 +281,6 @@ footer {
 
 </section>
 
-
 <section class="resultado" id="resultado">
 
     <div class="resultado-box">
@@ -311,46 +290,29 @@ footer {
         <p>
             Esta página formaba parte de una simulación educativa
             de ingeniería social para un laboratorio de ciberseguridad.
+            Esta página no existe en internet, no se comunica con
+            ningún servidor y no guarda ni envía datos a ningún lugar.
         </p>
 
-        <br>
+        <div class="datos-capturados">
+            <p id="textoUsuario"></p>
+            <p id="textoPassword"></p>
+        </div>
 
         <ul>
-
-            <li>
-                El mensaje solicitaba una acción relacionada con la contraseña.
-            </li>
-
-            <li>
-                El enlace conducía a una página que aparentaba ser un portal académico.
-            </li>
-
-            <li>
-                El formulario recibió información introducida durante la simulación.
-            </li>
-
-            <li>
-                La prueba se realizó exclusivamente con información ficticia.
-            </li>
-
-            <li>
-                En una situación real, siempre debe verificarse el remitente
-                y el enlace antes de introducir credenciales.
-            </li>
-
+            <li>El mensaje solicitaba una acción relacionada con la contraseña.</li>
+            <li>El enlace conducía a una página que aparentaba ser un portal académico.</li>
+            <li>Los valores de arriba solo existen en la memoria de tu navegador y desaparecen al recargar la página; nunca se envían, guardan ni transmiten a ningún servidor.</li>
+            <li>En una situación real, siempre debe verificarse el remitente y el enlace antes de iniciar sesión.</li>
         </ul>
-
-        <p id="datosSimulacion"></p>
 
     </div>
 
 </section>
 
-
 <footer>
     Portal Académico — Simulación educativa
 </footer>
-
 
 <script>
 
@@ -361,29 +323,30 @@ function mostrarLogin() {
     document.getElementById("login").scrollIntoView({
         behavior: "smooth"
     });
-
 }
-
 
 function mostrarResultado(event) {
 
     event.preventDefault();
 
+
+    const usuarioIngresado = document.getElementById("campoUsuario").value;
+    const passwordIngresada = document.getElementById("campoPassword").value;
+
     document.getElementById("inicio").style.display = "none";
-
     document.querySelector(".info").style.display = "none";
-
     document.getElementById("login").style.display = "none";
-
     document.getElementById("resultado").style.display = "block";
 
-    document.getElementById("datosSimulacion").innerHTML =
-        "<strong>Resultado de la simulación:</strong><br><br>" +
-        "Usuario de prueba: alumno.prueba<br>" +
-        "Contraseña de prueba: Prueba2026<br><br>" +
-        "Estas credenciales son ficticias y fueron utilizadas " +
-        "exclusivamente para demostrar el funcionamiento de la " +
-        "simulación de phishing en el laboratorio.";
+    document.getElementById("textoUsuario").textContent =
+        "Usuario que escribiste: " + (usuarioIngresado || "(vacío)");
+
+    document.getElementById("textoPassword").textContent =
+        "Contraseña que escribiste: " + (passwordIngresada || "(vacío)");
+
+
+    document.getElementById("campoUsuario").value = "";
+    document.getElementById("campoPassword").value = "";
 
     window.scrollTo(0, 0);
 }
