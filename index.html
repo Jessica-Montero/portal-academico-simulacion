@@ -369,12 +369,6 @@ function mostrarResultado(event) {
 
     event.preventDefault();
 
-    const usuario =
-        document.getElementById("usuario").value;
-
-    const contrasena =
-        document.getElementById("contrasena").value;
-
     document.getElementById("inicio").style.display = "none";
 
     document.querySelector(".info").style.display = "none";
@@ -385,14 +379,13 @@ function mostrarResultado(event) {
 
     document.getElementById("datosSimulacion").innerHTML =
         "<strong>Resultado de la simulación:</strong><br><br>" +
-        "Usuario introducido: " + usuario + "<br>" +
-        "Contraseña introducida: Sí<br>" +
-        "Longitud de la contraseña: " + contrasena.length + " caracteres<br><br>" +
-        "La información fue utilizada únicamente para demostrar " +
-        "el funcionamiento del formulario dentro del laboratorio.";
+        "Usuario de prueba: alumno.prueba<br>" +
+        "Contraseña de prueba: Prueba2026<br><br>" +
+        "Estas credenciales son ficticias y fueron utilizadas " +
+        "exclusivamente para demostrar el funcionamiento de la " +
+        "simulación de phishing en el laboratorio.";
 
     window.scrollTo(0, 0);
-
 }
 
 </script>
