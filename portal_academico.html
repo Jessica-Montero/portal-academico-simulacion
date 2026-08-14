@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Académico</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1f4f7;
+    color: #263238;
+}
+
+header {
+    background: #163f5c;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    min-height: 360px;
+    background: linear-gradient(135deg, #163f5c, #49718c);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e4a33a;
+    color: #17202a;
+    padding: 13px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info {
+    padding: 45px 8%;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.10);
+}
+
+.card h3 {
+    color: #163f5c;
+    margin-bottom: 12px;
+}
+
+.login {
+    display: none;
+    min-height: 550px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.login-box {
+    background: white;
+    width: 380px;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+}
+
+.login-box h2 {
+    color: #163f5c;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #607d8b;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd6dd;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #163f5c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.resultado {
+    display: none;
+    min-height: 600px;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.resultado-box {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.12);
+}
+
+.resultado h1 {
+    color: #b3261e;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.resultado li {
+    text-align: left;
+    margin: 12px 0;
+}
+
+footer {
+    background: #163f5c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Portal Académico</div>
+
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Información</a>
+        <a href="#">Servicios</a>
+        <a href="#">Contacto</a>
+    </nav>
+</header>
+
+<section class="hero" id="inicio">
+    <div>
+        <h1>Bienvenido al Portal Académico</h1>
+
+        <p>
+            Acceda a sus servicios y recursos académicos.
+        </p>
+
+        <a href="#login" class="btn" onclick="mostrarLogin()">
+            Iniciar sesión
+        </a>
+    </div>
+</section>
+
+<section class="info">
+    <h2>Servicios académicos</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Cursos</h3>
+            <p>Consulte información sobre cursos y actividades académicas.</p>
+        </div>
+
+        <div class="card">
+            <h3>Calendario</h3>
+            <p>Revise fechas y actividades importantes.</p>
+        </div>
+
+        <div class="card">
+            <h3>Documentos</h3>
+            <p>Acceda a recursos e información académica.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="login" id="login">
+
+    <div class="login-box">
+
+        <h2>Iniciar sesión</h2>
+
+        <p>Ingrese sus datos para acceder al portal.</p>
+
+        <form onsubmit="mostrarResultado(event)">
+
+            <label>Usuario</label>
+            <input type="text"
+                   placeholder="Ingrese su usuario"
+                   autocomplete="off">
+
+            <label>Contraseña</label>
+            <input type="password"
+                   placeholder="Ingrese su contraseña"
+                   autocomplete="off">
+
+            <button type="submit">
+                Iniciar sesión
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section class="resultado" id="resultado">
+
+    <div class="resultado-box">
+
+        <h1>⚠️ ¡Has caído!</h1>
+
+        <p>
+            Esta página formaba parte de una simulación educativa
+            de ingeniería social para un laboratorio de ciberseguridad.
+        </p>
+
+        <br>
+
+        <ul>
+            <li>El mensaje solicitaba una acción relacionada con la contraseña.</li>
+            <li>El enlace conducía a una página que aparentaba ser un portal académico.</li>
+            <li>Los datos introducidos en esta simulación no se envían ni almacenan.</li>
+            <li>En una situación real, siempre debe verificarse el remitente y el enlace antes de iniciar sesión.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+<footer>
+    Portal Académico — Simulación educativa
+</footer>
+
+<script>
+
+function mostrarLogin() {
+
+    document.getElementById("login").style.display = "flex";
+
+    document.getElementById("login").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function mostrarResultado(event) {
+
+    event.preventDefault();
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.querySelector(".info").style.display = "none";
+
+    document.getElementById("login").style.display = "none";
+
+    document.getElementById("resultado").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+</html>
