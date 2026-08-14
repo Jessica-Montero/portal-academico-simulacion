@@ -178,7 +178,7 @@ button {
     padding: 18px;
     background: #f1f4f7;
     border-radius: 8px;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 footer {
@@ -372,6 +372,9 @@ function mostrarResultado(event) {
     const usuario =
         document.getElementById("usuario").value;
 
+    const contrasena =
+        document.getElementById("contrasena").value;
+
     document.getElementById("inicio").style.display = "none";
 
     document.querySelector(".info").style.display = "none";
@@ -383,7 +386,8 @@ function mostrarResultado(event) {
     document.getElementById("datosSimulacion").innerHTML =
         "<strong>Resultado de la simulación:</strong><br><br>" +
         "Usuario introducido: " + usuario + "<br>" +
-        "Contraseña introducida: ********<br><br>" +
+        "Contraseña introducida: Sí<br>" +
+        "Longitud de la contraseña: " + contrasena.length + " caracteres<br><br>" +
         "La información fue utilizada únicamente para demostrar " +
         "el funcionamiento del formulario dentro del laboratorio.";
 
