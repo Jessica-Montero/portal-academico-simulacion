@@ -173,6 +173,14 @@ button {
     margin: 12px 0;
 }
 
+#datosSimulacion {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f1f4f7;
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
 footer {
     background: #163f5c;
     color: white;
@@ -185,7 +193,10 @@ footer {
 <body>
 
 <header>
-    <div class="logo">Portal Académico</div>
+
+    <div class="logo">
+        Portal Académico
+    </div>
 
     <nav>
         <a href="#">Inicio</a>
@@ -193,64 +204,126 @@ footer {
         <a href="#">Servicios</a>
         <a href="#">Contacto</a>
     </nav>
+
 </header>
 
+
 <section class="hero" id="inicio">
+
     <div>
-        <h1>Bienvenido al Portal Académico</h1>
+
+        <h1>
+            Bienvenido al Portal Académico
+        </h1>
 
         <p>
             Acceda a sus servicios y recursos académicos.
         </p>
 
-        <a href="#login" class="btn" onclick="mostrarLogin()">
+        <a href="#login"
+           class="btn"
+           onclick="mostrarLogin()">
+
             Iniciar sesión
+
         </a>
+
     </div>
+
 </section>
 
+
 <section class="info">
-    <h2>Servicios académicos</h2>
+
+    <h2>
+        Servicios académicos
+    </h2>
 
     <div class="cards">
 
         <div class="card">
-            <h3>Cursos</h3>
-            <p>Consulte información sobre cursos y actividades académicas.</p>
+
+            <h3>
+                Cursos
+            </h3>
+
+            <p>
+                Consulte información sobre cursos y actividades académicas.
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>Calendario</h3>
-            <p>Revise fechas y actividades importantes.</p>
-        </div>
 
         <div class="card">
-            <h3>Documentos</h3>
-            <p>Acceda a recursos e información académica.</p>
+
+            <h3>
+                Calendario
+            </h3>
+
+            <p>
+                Revise fechas y actividades importantes.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Documentos
+            </h3>
+
+            <p>
+                Acceda a recursos e información académica.
+            </p>
+
         </div>
 
     </div>
+
 </section>
+
 
 <section class="login" id="login">
 
     <div class="login-box">
 
-        <h2>Iniciar sesión</h2>
+        <h2>
+            Iniciar sesión
+        </h2>
 
-        <p>Ingrese sus datos para acceder al portal.</p>
+        <p>
+            Ingrese sus datos para acceder al portal.
+        </p>
+
 
         <form onsubmit="mostrarResultado(event)">
 
-            <label>Usuario</label>
-            <input type="text"
-                   placeholder="Ingrese su usuario"
-                   autocomplete="off">
+            <label>
+                Usuario
+            </label>
 
-            <label>Contraseña</label>
-            <input type="password"
-                   placeholder="Ingrese su contraseña"
-                   autocomplete="off">
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Ingrese su usuario"
+                autocomplete="off"
+                required
+            >
+
+
+            <label>
+                Contraseña
+            </label>
+
+            <input
+                type="password"
+                id="contrasena"
+                placeholder="Ingrese su contraseña"
+                autocomplete="off"
+                required
+            >
+
 
             <button type="submit">
                 Iniciar sesión
@@ -262,11 +335,14 @@ footer {
 
 </section>
 
+
 <section class="resultado" id="resultado">
 
     <div class="resultado-box">
 
-        <h1>⚠️ ¡Has caído!</h1>
+        <h1>
+            ⚠️ ¡Has caído!
+        </h1>
 
         <p>
             Esta página formaba parte de una simulación educativa
@@ -275,20 +351,46 @@ footer {
 
         <br>
 
+
         <ul>
-            <li>El mensaje solicitaba una acción relacionada con la contraseña.</li>
-            <li>El enlace conducía a una página que aparentaba ser un portal académico.</li>
-            <li>Los datos introducidos en esta simulación no se envían ni almacenan.</li>
-            <li>En una situación real, siempre debe verificarse el remitente y el enlace antes de iniciar sesión.</li>
+
+            <li>
+                El mensaje solicitaba una acción relacionada con la contraseña.
+            </li>
+
+            <li>
+                El enlace conducía a una página que aparentaba ser un portal académico.
+            </li>
+
+            <li>
+                El formulario permitió observar que el usuario había introducido información.
+            </li>
+
+            <li>
+                Los datos utilizados en esta simulación no se envían ni almacenan.
+            </li>
+
+            <li>
+                En una situación real, siempre debe verificarse el remitente
+                y el enlace antes de iniciar sesión.
+            </li>
+
         </ul>
+
+
+        <p id="datosSimulacion"></p>
 
     </div>
 
 </section>
 
+
 <footer>
+
     Portal Académico — Simulación educativa
+
 </footer>
+
 
 <script>
 
@@ -299,11 +401,17 @@ function mostrarLogin() {
     document.getElementById("login").scrollIntoView({
         behavior: "smooth"
     });
+
 }
+
 
 function mostrarResultado(event) {
 
     event.preventDefault();
+
+    const usuario =
+        document.getElementById("usuario").value;
+
 
     document.getElementById("inicio").style.display = "none";
 
@@ -313,7 +421,20 @@ function mostrarResultado(event) {
 
     document.getElementById("resultado").style.display = "block";
 
+
+    document.getElementById("datosSimulacion").innerHTML =
+
+        "<strong>Resultado de la simulación:</strong><br>" +
+
+        "Se detectó el ingreso de datos en el formulario.<br>" +
+
+        "Usuario utilizado: " + usuario + "<br>" +
+
+        "La contraseña utilizada fue ficticia y no fue almacenada ni enviada.";
+
+
     window.scrollTo(0, 0);
+
 }
 
 </script>
